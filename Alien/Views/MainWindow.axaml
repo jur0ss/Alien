@@ -10,26 +10,65 @@
         Title="Alien">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
     <StackPanel Margin="20" Spacing="20" Orientation="Vertical">
         <TextBlock Text="Alien Universe Database" Margin="0,0,0,20"/>
-        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto">
-            <ListBox ItemsSource="{Binding Movies}"
-                     SelectedItem="{Binding SelectedMovie}" Height="200">
+        <Grid ColumnDefinitions="2*,3*" RowDefinitions="*">
+            <ListBox Grid.Column="0" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" Height="500" Width="500">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Spacing="10">
                             <TextBlock Text="{Binding OriginalTitle}"/>
+                            <TextBlock Text=" | "/>
                             <TextBlock Text="{Binding PolishTitle}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+
+            <ScrollViewer Grid.Column="1">
+                <StackPanel Orientation="Vertical" Spacing="10" Width="300">
+                    <TextBlock Text="Tytuł oryginalny:" />
+                    <TextBox Text="{Binding NewMovie.OriginalTitle}" />
+
+                    <TextBlock Text="Tytuł polski:" />
+                    <TextBox Text="{Binding NewMovie.PolishTitle}" />
+
+                    <TextBlock Text="Rok:" />
+                    <TextBox Text="{Binding NewMovie.Year}" />
+
+                    <TextBlock Text="Reżyser:" />
+                    <TextBox Text="{Binding NewMovie.Director}" />
+
+                    <TextBlock Text="Gatunek:" />
+                    <TextBox Text="{Binding NewMovie.Genre}" />
+
+                    <TextBlock Text="Czas trwania:" />
+                    <TextBox Text="{Binding NewMovie.Length}" />
+
+                    <TextBlock Text="Ocena:" />
+                    <TextBox Text="{Binding NewMovie.Rating}" />
+
+                    <TextBlock Text="Główne postacie (oddzielone przecinkami):" />
+                    <TextBox Text="{Binding MainCharactersText}" />
+
+                    <TextBlock Text="Statek:" />
+                    <TextBox Text="{Binding NewMovie.Ship}" />
+
+                    <TextBlock Text="Opis:" />
+                    <TextBox Text="{Binding NewMovie.Description}" AcceptsReturn="True" Height="60" />
+
+                    <TextBlock Text="Ciekawostka:" />
+                    <TextBox Text="{Binding NewMovie.FunFact}" AcceptsReturn="True" Height="60" />
+
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <Button Content="Dodaj film" Command="{Binding AddMovieCommand}" />
+                        <Button Content="Usuń film" Command="{Binding DeleteMovieCommand}" />
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </StackPanel>
-
 </Window>

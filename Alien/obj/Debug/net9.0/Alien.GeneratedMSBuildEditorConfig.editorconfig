@@ -24,8 +24,8 @@ build_property.EnableCodeStyleSeverity =
 [/home/jurekg/RiderProjects/Alien/Alien/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/jurekg/RiderProjects/Alien/Alien/Views/MainWindow.axaml]
+[/home/jurekg/RiderProjects/Alien/Alien/Views/DetailsWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/jurekg/RiderProjects/Alien/Alien/Views/MovieDetailsWindow.axaml]
+[/home/jurekg/RiderProjects/Alien/Alien/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
