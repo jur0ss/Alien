@@ -15,6 +15,21 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding }" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel Margin="20" Spacing="20" Orientation="Vertical">
+        <TextBlock Text="Alien Universe Database" Margin="0,0,0,20"/>
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto">
+            <ListBox ItemsSource="{Binding Movies}"
+                     SelectedItem="{Binding SelectedMovie}" Height="200">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="{Binding OriginalTitle}"/>
+                            <TextBlock Text="{Binding PolishTitle}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </StackPanel>
 
 </Window>

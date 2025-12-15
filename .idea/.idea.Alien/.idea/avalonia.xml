@@ -4,6 +4,8 @@
     <option name="projectPerEditor">
       <map>
         <entry key="Alien/Views/MainWindow.axaml" value="Alien/Alien.csproj" />
+        <entry key="Alien/Views/MovieDetails.axaml" value="Alien/Alien.csproj" />
+        <entry key="Alien/Views/MovieDetailsWindow.axaml" value="Alien/Alien.csproj" />
       </map>
     </option>
   </component>

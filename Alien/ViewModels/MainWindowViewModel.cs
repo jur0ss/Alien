@@ -1,5 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Reactive;
+using System.Reactive.Linq;
 using Alien.Models;
+using ReactiveUI;
 
 namespace Alien.ViewModels;
 
@@ -21,4 +25,32 @@ public class MainWindowViewModel : ViewModelBase
             Ship = "USCSS Nostromo"
         }
     };
+    
+    private MovieModel _selectedMovie;
+    
+    public MovieModel SelectedMovie {
+        get => _selectedMovie;
+        set => this.RaiseAndSetIfChanged(ref _selectedMovie, value);
+    }
+    
+    public ReactiveCommand<Unit, Unit> ShowDetailsCommand { get; }
+
+    private void ShowDetails()
+    {
+        if (SelectedMovie != null)
+        {
+            Console.WriteLine($"{SelectedMovie.OriginalTitle} - {SelectedMovie.PolishTitle}");
+        }
+    }
+
+    public MainWindowViewModel()
+    {
+        var canShow = this
+            .WhenAnyValue(x => x.SelectedMovie)
+            .Select(movie => movie != null);
+        
+        ShowDetailsCommand = ReactiveCommand.Create(ShowDetails, canShow);
+    }
+    
+    
 }
